@@ -8,7 +8,7 @@ export default function CreateBoard({ onBoardCreated }) {
       alert("Board name is required");
       return;
     }
-    await fetch('http://localhost:5000/api/boards', {
+    await fetch(`${import.meta.env.VITE_API_BASE}/api/boards`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name }),

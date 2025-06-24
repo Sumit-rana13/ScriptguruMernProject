@@ -6,8 +6,13 @@ export default function Board({ board }) {
   const [tasks, setTasks] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
+  // const loadTasks = () => {
+  //   fetch(`http://localhost:5000/api/boards/${board._id}/tasks`)
+  //     .then(res => res.json())
+  //     .then(data => setTasks(data));
+  // };
   const loadTasks = () => {
-    fetch(`http://localhost:5000/api/boards/${board._id}/tasks`)
+    fetch(`${import.meta.env.VITE_API_BASE}/api/boards/${board._id}/tasks`)
       .then(res => res.json())
       .then(data => setTasks(data));
   };
@@ -17,7 +22,7 @@ export default function Board({ board }) {
   }, [board]);
 
   const handleStatusChange = (taskId, newStatus) => {
-    fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+    fetch(`${import.meta.env.VITE_API_BASE}/api/tasks/${taskId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: newStatus }),
@@ -25,7 +30,7 @@ export default function Board({ board }) {
   };
 
   const handleDelete = (taskId) => {
-    fetch(`http://localhost:5000/api/tasks/${taskId}`, { method: 'DELETE' })
+    fetch(`${import.meta.env.VITE_API_BASE}/api/tasks/${taskId}`, { method: 'DELETE' })
       .then(loadTasks);
   };
 

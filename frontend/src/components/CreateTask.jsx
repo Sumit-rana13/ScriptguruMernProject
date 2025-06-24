@@ -18,7 +18,7 @@ export default function CreateTaskModal({ boardId, onTaskCreated, onClose }) {
   };
 
   const handleSubmit = async () => {
-    await fetch(`http://localhost:5000/api/boards/${boardId}/tasks`, {
+    await fetch(`${import.meta.env.VITE_API_BASE}/api/boards/${boardId}/tasks`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
