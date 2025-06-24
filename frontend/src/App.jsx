@@ -9,7 +9,7 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState(null);
 
   const loadBoards = () => {
-    fetch('http://localhost:5000/api/boards')
+    fetch(`${import.meta.env.VITE_API_BASE}/api/boards`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
