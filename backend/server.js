@@ -18,6 +18,10 @@ app.use(express.json());
 
 app.use('/api/boards', boardRoutes);
 app.use('/api/tasks', taskRoutes);
+app.use('/api', function(){
+  console.log("successful setup");
+  
+})
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
